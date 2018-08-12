@@ -1,0 +1,394 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "User Service Subscription API",
+    "version": "v1"
+  },
+  "host": "localhost:8080",
+  "x-basePath": "/usermgt/{version}/",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "definitions": {
+    "registration": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "firstname": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "subscriptions": {
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "serviceType": {
+                "enum": [
+                  "curr_historic_rates",
+                  "curr_live_rates"
+                ],
+                "type": "string"
+              },
+              "currencyPairs": {
+                "minItems": 1,
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "serviceType"
+            ]
+          }
+        }
+      },
+      "required": [
+        "userId",
+        "firstname",
+        "lastname",
+        "email"
+      ]
+    },
+    "registrations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string"
+          },
+          "firstname": {
+            "type": "string"
+          },
+          "lastname": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "subscriptions": {
+            "uniqueItems": true,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "serviceType": {
+                  "enum": [
+                    "curr_historic_rates",
+                    "curr_live_rates"
+                  ],
+                  "type": "string"
+                },
+                "currencyPairs": {
+                  "minItems": 1,
+                  "uniqueItems": true,
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "serviceType"
+              ]
+            }
+          }
+        },
+        "required": [
+          "userId",
+          "firstname",
+          "lastname",
+          "email"
+        ]
+      }
+    },
+    "newregistration": {
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "firstname": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "subscriptions": {
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "serviceType": {
+                "enum": [
+                  "curr_historic_rates",
+                  "curr_live_rates"
+                ],
+                "type": "string"
+              },
+              "currencyPairs": {
+                "minItems": 1,
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "serviceType"
+            ]
+          }
+        }
+      },
+      "required": [
+        "userId",
+        "firstname",
+        "lastname",
+        "email"
+      ]
+    },
+    "partialregistration": {
+      "type": "object",
+      "properties": {
+        "firstname": {
+          "type": "string"
+        },
+        "lastname": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "subscriptions": {
+          "uniqueItems": true,
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "serviceType": {
+                "enum": [
+                  "curr_historic_rates",
+                  "curr_live_rates"
+                ],
+                "type": "string"
+              },
+              "currencyPairs": {
+                "minItems": 1,
+                "uniqueItems": true,
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "serviceType"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "trait:secured:Authorization": {
+      "description": "The auth token for this request",
+      "type": "string",
+      "in": "header",
+      "name": "Authorization",
+      "required": true
+    },
+    "trait:additionalHeader:x-api-version": {
+      "required": true,
+      "description": "The API implementation version",
+      "type": "string",
+      "in": "header",
+      "name": "x-api-version"
+    }
+  },
+  "responses": {
+    "trait:secured:401": {
+      "description": "Unauthorized"
+    }
+  },
+  "paths": {
+    "/registrations": {
+      "get": {
+        "operationId": "GET_registrations",
+        "responses": {
+          "200": {
+            "description": "",
+            "examples": {
+              "application/json": [
+                {
+                  "userId": "43997495",
+                  "firstname": "John",
+                  "lastname": "Doe",
+                  "email": "john.doe@test.koweg.com",
+                  "serviceType": "curr_live_rates"
+                },
+                {
+                  "userId": "43997497",
+                  "firstname": "Jane",
+                  "lastname": "Doe",
+                  "email": "jane.doe@test.koweg.com",
+                  "serviceType": "curr_historic_rates"
+                }
+              ]
+            },
+            "schema": {
+              "$ref": "#/definitions/registrations"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/trait:additionalHeader:x-api-version"
+          },
+          {
+            "description": "Filter registrations by type. Either curr_live_rates or curr_historic_rates type",
+            "type": "string",
+            "in": "query",
+            "name": "serviceType"
+          }
+        ]
+      },
+      "post": {
+        "operationId": "POST_registrations",
+        "responses": {
+          "201": {
+            "description": "",
+            "headers": {
+              "location": {
+                "description": "The URI to the newly created resource",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/trait:additionalHeader:x-api-version"
+          },
+          {
+            "schema": {
+              "example": {
+                "userId": "43997007",
+                "firstname": "John",
+                "lastname": "Smith",
+                "email": "john.smith@test.koweg.com",
+                "serviceType": "curr_live_rates"
+              },
+              "$ref": "#/definitions/registration"
+            },
+            "in": "body",
+            "name": "body"
+          }
+        ]
+      }
+    },
+    "/registrations/{userId}": {
+      "get": {
+        "operationId": "GET_registrations-userId",
+        "responses": {
+          "200": {
+            "description": "",
+            "examples": {
+              "application/json": {
+                "firstname": "Max",
+                "lastname": "Mustermann",
+                "email": "max.mustermann@test.koweg.com",
+                "serviceType": "curr_live_rates"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/registration"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/trait:additionalHeader:x-api-version"
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "PATCH_registrations-userId",
+        "responses": {
+          "200": {
+            "description": "",
+            "examples": {
+              "application/json": {
+                "firstname": "Max",
+                "lastname": "Mustermann",
+                "email": "max.mustermann@test.koweg.com",
+                "serviceType": "curr_live_rates"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/partialregistration"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/trait:additionalHeader:x-api-version"
+          },
+          {
+            "schema": {
+              "example": {
+                "lastname": "Khan",
+                "serviceType": "curr_historic_rates"
+              },
+              "$ref": "#/definitions/partialregistration"
+            },
+            "in": "body",
+            "name": "body"
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "DELETE_registrations-userId",
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/trait:additionalHeader:x-api-version"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "type": "string",
+          "in": "path",
+          "name": "userId",
+          "required": true
+        }
+      ]
+    }
+  }
+}
