@@ -1,0 +1,89 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Wiremock Registration",
+		"_postman_id": "13a86eee-fea4-78ab-e5b1-f6b11d88a16e",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET REGISTRATION",
+			"request": {
+				"url": "http://localhost:9000/__admin/mappings/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"request\": {\n    \"method\": \"GET\",\n    \"urlPattern\": \"/registration\"\n  },\n  \"response\": {\n    \"status\": 200,\n    \"jsonBody\": {\n    \t\"[\n  {\n    \\\"userId\\\": \\\"43997495\\\",\n    \\\"firstname\\\": \\\"John\\\",\n    \\\"lastname\\\": \\\"Doe\\\",\n    \\\"email\\\": \\\"john.doe@test.koweg.com\\\",\n    \\\"serviceType\\\": \\\"curr_live_rates\\\"\n  },\n  {\n    \\\"userId\\\": \\\"43997497\\\",\n    \\\"firstname\\\": \\\"Jane\\\",\n    \\\"lastname\\\": \\\"Doe\\\",\n    \\\"email\\\": \\\"jane.doe@test.koweg.com\\\",\n    \\\"serviceType\\\": \\\"curr_historic_rates\\\"\n  }\n]\"\n    },\n    \"headers\": {\n      \"Content-Type\": \"application/json\"\n    }\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET REGISTRATION_404",
+			"request": {
+				"url": "http://localhost:9000/__admin/mappings/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"request\": {\n    \"method\": \"GET\",\n    \"urlPattern\": \"/registrations\"\n  },\n  \"response\": {\n    \"status\": 404,\n    \"jsonBody\": {\n\n  \"code\": \"string\",\n  \"correlationId\": \"string\",\n  \"description\": \"string\"\n    \n    \t\n    },\n    \"headers\": {\n      \"Content-Type\": \"application/json\"\n    }\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET REGISTRATION_OK",
+			"request": {
+				"url": "http://localhost:9000/__admin/mappings/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"request\": {\n    \"method\": \"GET\",\n    \"urlPattern\": \"/registrations\"\n  },\n  \"response\": {\n    \"status\": 200,\n    \"jsonBody\": [\n\t  {\n\t    \"userId\": \"43997495\",\n\t    \"firstname\": \"John\",\n\t    \"lastname\": \"Doe\",\n\t    \"email\": \"john.doe@test.koweg.com\",\n\t    \"serviceType\": \"curr_live_rates\"\n\t  },\n\t  {\n\t    \"userId\": \"43997497\",\n\t    \"firstname\": \"Jane\",\n\t    \"lastname\": \"Doe\",\n\t    \"email\": \"jane.doe@test.koweg.com\",\n\t    \"serviceType\": \"curr_historic_rates\"\n\t  },\n\t  {\n\t    \"userId\": \"43997491\",\n\t    \"firstname\": \"Olarinde\",\n\t    \"lastname\": \"Ajai\",\n\t    \"email\": \"olarinde.ajai@test.koweg.com\",\n\t    \"serviceType\": \"curr_historic_rates\"\n\t  }\n     ],\n    \"headers\": {\n      \"Content-Type\": \"application/json\"\n    }\n  }\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

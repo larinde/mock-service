@@ -1,0 +1,30 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPattern": "/registration"
+  },
+  "response": {
+    "status": 200,
+    "jsonBody": {
+	 [
+	  {
+	    "userId": "43997495",
+	    "firstname": "John",
+	    "lastname": "Doe",
+	    "email": "john.doe@test.koweg.com",
+	    "serviceType": "curr_live_rates"
+	  },
+	  {
+	    "userId": "43997497",
+	    "firstname": "Jane",
+	    "lastname": "Doe",
+	    "email": "jane.doe@test.koweg.com",
+	    "serviceType": "curr_historic_rates"
+	  }
+     ]      
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

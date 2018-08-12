@@ -1,0 +1,17 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPattern": "/registrations"
+  },
+  "response": {
+    "status": 404,
+    "jsonBody": {
+      "code": "string",
+      "correlationId": "string",
+      "description": "string"
+    },
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}
