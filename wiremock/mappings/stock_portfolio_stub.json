@@ -1,0 +1,41 @@
+{
+  "mappings": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "/mock/api/portfolios"
+      },
+      "response": {
+        "status": 200,
+        "fixedDelayMilliseconds": 1000,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "jsonBody": {
+          "size": 3,
+          "currency": "EUR",
+          "portfolios": [
+            {
+              "portfolioName": "Interactive Investor - ISA",
+              "accountType": "ISA",
+              "totalValue": 1234.77,
+              "lastUpdated": "2020-06-28T16:53:20.000Z"
+            },
+            {
+              "portfolioName": "Interactive Investor - Trading",
+              "accountType": "Trading",
+              "totalValue": 300.31,
+              "lastUpdated": "2020-06-28T16:53:20.000Z"
+            },
+            {
+              "portfolioName": "ING - Trading",
+              "accountType": "Trading",
+              "totalValue": 386.05,
+              "lastUpdated": "2020-06-28T16:53:20.000Z"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
