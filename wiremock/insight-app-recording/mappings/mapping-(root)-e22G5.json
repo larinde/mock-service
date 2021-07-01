@@ -1,0 +1,22 @@
+{
+  "id" : "35007907-9a0c-3d6c-a52f-f6f5ca6e35e4",
+  "request" : {
+    "url" : "/",
+    "method" : "POST",
+    "bodyPatterns" : [ {
+      "equalToJson" : "{\"query\":\"{\\n  getAllStockAlerts{\\n    id\\n    isin\\n    quantity\\n    lowerLimit\\n    upperLimit\\n  }\\n}\",\"variables\":{},\"operationName\":null}",
+      "ignoreArrayOrder" : true,
+      "ignoreExtraElements" : true
+    } ]
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-(root)-e22G5.json",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "Date" : "Thu, 01 Jul 2021 00:56:54 GMT",
+      "Keep-Alive" : "timeout=60"
+    }
+  },
+  "uuid" : "35007907-9a0c-3d6c-a52f-f6f5ca6e35e4"
+}

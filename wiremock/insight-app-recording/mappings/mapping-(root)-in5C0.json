@@ -1,0 +1,22 @@
+{
+  "id" : "f188a5cf-5e3b-345a-b033-38ea89edd14c",
+  "request" : {
+    "url" : "/",
+    "method" : "POST",
+    "bodyPatterns" : [ {
+      "equalToJson" : "{\"query\":\"{\\n  portfolios(portfolioId: \\\"II_TRADE\\\") {\\n    portfolioName\\n    positions {\\n      isin\\n      symbol\\n      stockName\\n      marketRate\\n      quantitiy\\n      currency\\n    }\\n    currency\\n    lastUpdated\\n  }\\n}\",\"variables\":{},\"operationName\":null}",
+      "ignoreArrayOrder" : true,
+      "ignoreExtraElements" : true
+    } ]
+  },
+  "response" : {
+    "status" : 200,
+    "bodyFileName" : "body-(root)-in5C0.json",
+    "headers" : {
+      "Content-Type" : "application/json",
+      "Date" : "Thu, 01 Jul 2021 00:57:38 GMT",
+      "Keep-Alive" : "timeout=60"
+    }
+  },
+  "uuid" : "f188a5cf-5e3b-345a-b033-38ea89edd14c"
+}

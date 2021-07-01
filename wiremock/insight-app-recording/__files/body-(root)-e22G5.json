@@ -1,0 +1,1 @@
+{"data":{"getAllStockAlerts":[{"id":"1","isin":"BNGO","quantity":100,"lowerLimit":5.23,"upperLimit":7.15},{"id":"2","isin":"BNGO","quantity":5000,"lowerLimit":10.0,"upperLimit":15.0},{"id":"3","isin":"SRNG","quantity":100,"lowerLimit":9.0,"upperLimit":9.75}]}}
